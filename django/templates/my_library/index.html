@@ -1,0 +1,25 @@
+{% extends "my_library/new_base.html" %}
+{% block content %}
+<div class="page-content">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="sidebar content-box" style="display: block;">
+                <ul class="nav">
+                    <!-- Main menu -->
+<!--                    <li><a href="index.html"><i class="glyphicon glyphicon-home"></i>首页</a></li>-->
+                    {% load static %}
+                    <li><a href="{% url 'users:my_records' %}"><i class="glyphicon glyphicon-list"></i> My Borrow List</a></li>
+                    <li><a href="{% url 'my_library:books' %}"><i class="glyphicon glyphicon-record"></i> Book List</a></li>
+                    <li><a href="{% url 'users:my_invoices' %}"><i class="glyphicon glyphicon-pencil"></i> My Invoices</a></li>
+                    <li><a href="{% url 'my_library:rooms' %}"><i class="glyphicon glyphicon-list"></i> Rooms</a></li>
+                    <li><a href="{% url 'my_library:chart' %}"><i class="glyphicon glyphicon-record"></i> Borrow History</a></li>
+                    <li><a href="{% url 'my_library:invoice_chart' %}"><i class="glyphicon glyphicon-record"></i> Invoice Chart</a></li>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<canvas id="horizontalBar"></canvas>
+{% endblock content %}

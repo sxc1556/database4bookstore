@@ -1,0 +1,25 @@
+{% extends "my_library/base.html" %}
+{% block content %}
+ <p>{{ book.booknmae }}</p>
+ <p>{{ book.topic }}</p>
+ <p>Number of copies {{num}}</p>
+<ul>
+{% for copy in copys %}
+<li>{{ copy.copy_id }}</li>
+ <li>Available?{{ copy.availability }}
+  {% if not copy.availability %}
+  <input type="submit" name="{{copy.copy_id}}" value="Empty" class="button" disabled = "disabled"></input>
+  {% else %}
+  <form action="" method="post">
+  {% csrf_token %}
+   <input type="hidden" name="{{copy.copy_id}}" value=1>
+   <button name="{{copy.copy_id}}borrow">borrow</button>
+  </form>
+  {% endif %}
+
+ </li>
+{% empty %}
+ <li>No copy for this book.</li>
+{% endfor %}
+</ul>
+{% endblock content %}

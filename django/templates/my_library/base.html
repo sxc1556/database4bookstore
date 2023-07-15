@@ -1,0 +1,13 @@
+<p>
+ {% if user.is_authenticated %}
+ Hello, {{ user.username }}.
+ <a href="{% url 'users:logout' %}">log out</a>-
+ <a href="{% url 'my_library:books' %}">books</a>-
+ <a href="{% url 'users:my_records' %}">my_records</a>-
+ <a href="{% url 'users:my_invoices' %}">my_invoices</a>
+ {% else %}
+ <a href="{% url 'users:login' %}">log in</a>
+ <a href="{% url 'users:register' %}">Sign up</a>
+ {% endif %}
+</p>
+{% block content %}{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends "my_library/base.html" %}
+{% block content %}
+ <p>Number of  your Records {{num}}</p>
+<ul>
+{% for record in records %}
+<li>ID:{{ record.copy_id }}    Status:{{record.return_status}}    BorrowDate:{{record.borrowdate}}
+  {% if record.return_status != 'Borrowed' %}
+  <button name="{{record.record_id}}"  disabled = "disabled">Returned</button>
+  {% else %}
+  <form action="" method="post">
+  {% csrf_token %}
+   <input type="hidden" name="{{record.record_id}}" value=1>
+   <button name="{{record.record_id}}Return">Return</button>
+  </form>
+  {% endif %}
+</li>
+ </li>
+{% empty %}
+ <li>No records</li>
+{% endfor %}
+</ul>
+{% endblock content %}

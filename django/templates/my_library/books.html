@@ -1,0 +1,15 @@
+{% extends "my_library/base.html" %}
+
+
+
+
+{% block content %}
+ <p>Books</p>
+<ul>
+{% for book in books %}
+ <li><a href = "/my_library/books/{{book.book_id}}/">{{ book.booknmae }}</a></li>
+{% empty %}
+ <li>No book have been added yet.</li>
+{% endfor %}
+</ul>
+{% endblock content %}

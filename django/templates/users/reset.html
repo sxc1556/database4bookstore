@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reset</title>
+</head>
+<body>
+
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <table>
+        <tbody>
+            <tr>
+                <td>Password：</td>
+                <td><input type="password" name="username"></td>
+            </tr>
+            <tr>
+                <td>Confirm Password：</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <button> <a href = "{% url 'users:login'%}">Reset</a></button>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
+{% endblock content %}

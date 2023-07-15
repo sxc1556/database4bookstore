@@ -1,0 +1,28 @@
+{% extends "my_library/base.html" %}
+{% block content %}
+ <p>Number of  your invoices {{num}}</p>
+<ul>
+{% for invoice in invoices %}
+<li>Invoice_id:{{invoice.invoice_id}}  Date:{{ invoice.record__actual_return_date }}  Balance:{{invoice.invoice_amount}}
+  {% if invoice.invoice_status != '0' %}
+  <button name="{{invoice.invoice_id}}"  disabled = "disabled">All paid</button>
+  {% else %}
+    <a href = "/users/my_invoices/{{invoice.invoice_id}}/">Pay for this invoice</a>
+  {% endif %}
+</li>
+ </li>
+{% empty %}
+ <li>No invoices</li>
+{% endfor %}
+</ul>
+ <p>Number of  your payments {{num2}}</p>
+<ul>
+{% for payment in payments %}
+<li>Invoice_id:{{payment.invoice_id}}  Payment_id:{{payment.payment_id}}  Amount:{{payment.paymentamount}}
+</li>
+ </li>
+{% empty %}
+ <li>No Payments</li>
+{% endfor %}
+</ul>
+{% endblock content %}
